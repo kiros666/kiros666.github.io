@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="Kiros, 314401009@qq.com">
+<meta name="reply-to" content="314401009@qq.com">
+<meta name="owner" content="Kiros">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="welcome to Kiros'blog" />
+
+
+
+
+<meta name="keywords" content="闭包," />
+
+
+<meta name="description" content="一、什么是闭包和闭包的几种写法和用法1、什么是闭包 闭包，官方对闭包的解释是：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。闭包的特点：　　1. 作为一个函数变量的一个引用，当函数返回时，其处于激活状态。　　2. 一个闭包就是当一个函数返回时，一个没有释放资源的栈区。　　简单的说，Javascript允许使用内部函数—即函数定义和函数表达式位于">
+<meta name="keywords" content="闭包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】全面理解Javascript闭包和闭包的几种写法及用途">
+<meta property="og:url" content="https://www.kiros.club/2018/06/06/【转】全面理解Javascript闭包和闭包的几种写法及用途/index.html">
+<meta property="og:site_name" content="Kiros">
+<meta property="og:description" content="一、什么是闭包和闭包的几种写法和用法1、什么是闭包 闭包，官方对闭包的解释是：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。闭包的特点：　　1. 作为一个函数变量的一个引用，当函数返回时，其处于激活状态。　　2. 一个闭包就是当一个函数返回时，一个没有释放资源的栈区。　　简单的说，Javascript允许使用内部函数—即函数定义和函数表达式位于">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-06T14:01:15.763Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【转】全面理解Javascript闭包和闭包的几种写法及用途">
+<meta name="twitter:description" content="一、什么是闭包和闭包的几种写法和用法1、什么是闭包 闭包，官方对闭包的解释是：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。闭包的特点：　　1. 作为一个函数变量的一个引用，当函数返回时，其处于激活状态。　　2. 一个闭包就是当一个函数返回时，一个没有释放资源的栈区。　　简单的说，Javascript允许使用内部函数—即函数定义和函数表达式位于">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+  <title> 【转】全面理解Javascript闭包和闭包的几种写法及用途 </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header" style="background: url(/img/04.jpg) center / cover">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="【转】全面理解Javascript闭包和闭包的几种写法及用途"> 【转】全面理解Javascript闭包和闭包的几种写法及用途 </h1>
+
+        
+        <div class="post-meta">
+          <div class="post-time">
+            发表于
+            <time  datetime="2018-06-06T21:52:50+08:00" content="2018-06-06">
+              2018-06-06
+            </time>
+          </div>
+
+          
+            <div class="post-category" >
+              
+                <span>
+                  <a href="/categories#javascript" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </div>
+          
+
+          
+            
+          
+        </div>
+        
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+        
+        <a class="nav-link" href="/project" rel="section">
+          项目
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><h2 id="一、什么是闭包和闭包的几种写法和用法"><a href="#一、什么是闭包和闭包的几种写法和用法" class="headerlink" title="一、什么是闭包和闭包的几种写法和用法"></a>一、什么是闭包和闭包的几种写法和用法</h2><p>1、什么是闭包</p>
+<p>闭包，官方对闭包的解释是：一个拥有许多变量和绑定了这些变量的环境的表达式（通常是一个函数），因而这些变量也是该表达式的一部分。闭包的特点：<br>　　1. 作为一个函数变量的一个引用，当函数返回时，其处于激活状态。<br>　　2. 一个闭包就是当一个函数返回时，一个没有释放资源的栈区。<br>　　简单的说，Javascript允许使用内部函数—即函数定义和函数表达式位于另一个函数的函数体内。而且，这些内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。</p>
+<p>2、闭包的几种写法和用法</p>
+<p>首先要明白，在JS中一切都是对象，函数是对象的一种。下面先来看一下闭包的5种写法，简单理解一下什么是闭包。后面会具体解释。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//第1种写法  </span><br><span class="line">function Circle(r) &#123;  </span><br><span class="line">      this.r = r;  </span><br><span class="line">&#125;  </span><br><span class="line">Circle.PI = 3.14159;  </span><br><span class="line">Circle.prototype.area = function() &#123;  </span><br><span class="line">  return Circle.PI * this.r * this.r;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">var c = new Circle(1.0);     </span><br><span class="line">alert(c.area());</span><br></pre></td></tr></table></figure>
+<p>这种写法没什么特别的，只是给函数添加一些属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//第2种写法  </span><br><span class="line">var Circle = function() &#123;  </span><br><span class="line">   var obj = new Object();  </span><br><span class="line">   obj.PI = 3.14159;  </span><br><span class="line">     </span><br><span class="line">   obj.area = function( r ) &#123;  </span><br><span class="line">       return this.PI * r * r;  </span><br><span class="line">   &#125;  </span><br><span class="line">   return obj;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">var c = new Circle();  </span><br><span class="line">alert( c.area( 1.0 ) );</span><br></pre></td></tr></table></figure>
+<p>这种写法是声明一个变量，将一个函数当作值赋给变量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//第3种写法  </span><br><span class="line">var Circle = new Object();  </span><br><span class="line">Circle.PI = 3.14159;  </span><br><span class="line">Circle.Area = function( r ) &#123;  </span><br><span class="line">       return this.PI * r * r;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line">alert( Circle.Area( 1.0 ) );</span><br></pre></td></tr></table></figure>
+<p>这种方法最好理解，就是new 一个对象，然后给对象添加属性和方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">//第4种写法  </span><br><span class="line">var Circle=&#123;  </span><br><span class="line">   &quot;PI&quot;:3.14159,  </span><br><span class="line"> &quot;area&quot;:function(r)&#123;  </span><br><span class="line">          return this.PI * r * r;  </span><br><span class="line">        &#125;  </span><br><span class="line">&#125;;  </span><br><span class="line">alert( Circle.area(1.0) );</span><br></pre></td></tr></table></figure>
+<p>这种方法使用较多，也最为方便。var obj = {}就是声明一个空的对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//第5种写法  </span><br><span class="line">var Circle = new Function(&quot;this.PI = 3.14159;this.area = function( r ) &#123;return r*r*this.PI;&#125;&quot;);  </span><br><span class="line">  </span><br><span class="line">alert( (new Circle()).area(1.0) );</span><br></pre></td></tr></table></figure></p>
+<p>说实话，这种写法我是没用过，大家可以参考一下。</p>
+<p>总的来说，上面几种方法，第2中和第4中较为常见，大家可以根据习惯选择。</p>
+<p>上面代码中出现了JS中常用的Prototype，那么Prototype有什么用呢？下面我们来看一下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var dom = function()&#123;</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">dom.Show = function()&#123;</span><br><span class="line">    alert(&quot;Show Message&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">dom.prototype.Display = function()&#123;</span><br><span class="line">    alert(&quot;Property Message&quot;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">dom.Display(); //error</span><br><span class="line">dom.Show();  </span><br><span class="line">var d = new dom();</span><br><span class="line">d.Display();</span><br><span class="line">d.Show(); //error</span><br></pre></td></tr></table></figure>
+<p>我们首先声明一个变量，将一个函数赋给他，因为在Javascript中每个函数都有一个Portotype属性，而对象没有。添加两个方法，分别直接添加和添加打破Prototype上面，来看下调用情况。分析结果如下：</p>
+<p> 　　1、不使用prototype属性定义的对象方法，是静态方法，只能直接用类名进行调用！另外，此静态方法中无法使用this变量来调用对象其他的属性！<br>　　 2、使用prototype属性定义的对象方法，是非静态方法，只有在实例化后才能使用！其方法内部可以this来引用对象自身中的其他属性！</p>
+<p>下面我们再来看一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var dom = function()&#123;</span><br><span class="line">        var Name = &quot;Default&quot;;</span><br><span class="line">        this.Sex = &quot;Boy&quot;;</span><br><span class="line">        this.success = function()&#123;</span><br><span class="line">            alert(&quot;Success&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    alert(dom.Name);</span><br><span class="line">    alert(dom.Sex);</span><br></pre></td></tr></table></figure>
+<p>大家先看看，会显示什么呢？ 答案是两个都显示Undefined,为什么呢？这是由于在Javascript中每个function都会形成一个作用域，而这些变量声明在函数中，所以就处于这个函数的作用域中，外部是无法访问的。要想访问变量，就必须new一个实例出来。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var html = &#123;</span><br><span class="line">        Name:&apos;Object&apos;,</span><br><span class="line">        Success:function()&#123;</span><br><span class="line">            this.Say = function()&#123;</span><br><span class="line">                    alert(&quot;Hello,world&quot;);</span><br><span class="line">            &#125;;</span><br><span class="line">            alert(&quot;Obj Success&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br></pre></td></tr></table></figure>
+<p>再来看看这种写法，其实这是Javascript的一个”语法糖”，这种写法相当于：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var html = new Object();</span><br><span class="line">html.Name = &apos;Object&apos;;</span><br><span class="line">html.Success = function()&#123;</span><br><span class="line">        this.Say = function()&#123;</span><br><span class="line">                alert(&quot;Hello,world&quot;);</span><br><span class="line">        &#125;;</span><br><span class="line">        alert(&quot;Obj Success&quot;);</span><br></pre></td></tr></table></figure>
+<p>变量html是一个对象，不是函数，所以没有Prototype属性，其方法也都是公有方法，html不能被实例化。否则会出现如下错误：</p>
+<p>但是他可以作为值赋给其它变量，如var o = html; 我们可以这样使用它：</p>
+<pre><code>alert(html.Name);
+html.Success();
+</code></pre><p>说到这里，完了吗？细心的人会问，怎么访问Success方法中的Say方法呢？是html.Success.Say()吗？</p>
+<p>当然不是，上面刚说过由于作用域的限制，是访问不到的。所以要用下面的方法访问：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var s = new html.Success();</span><br><span class="line">s.Say();</span><br><span class="line"></span><br><span class="line">//还可以写到外面</span><br><span class="line">html.Success.prototype.Show = function()&#123;</span><br><span class="line">    alert(&quot;HaHa&quot;);</span><br><span class="line">&#125;;</span><br><span class="line">var s = new html.Success();</span><br><span class="line">s.Show();</span><br></pre></td></tr></table></figure>
+<p>关于Javascript作用域的问题，不是一两句能说清楚的，有兴趣的大家可以网上找些资料看看。</p>
+<h2 id="二、Javascript闭包的用途"><a href="#二、Javascript闭包的用途" class="headerlink" title="二、Javascript闭包的用途"></a>二、Javascript闭包的用途</h2><p>事实上，通过使用闭包，我们可以做很多事情。比如模拟面向对象的代码风格；更优雅，更简洁的表达出代码；在某些方面提升代码的执行效率。</p>
+<p>1、匿名自执行函数</p>
+<p>　　我们知道所有的变量，如果不加上var关键字，则默认的会添加到全局对象的属性上去，这样的临时变量加入全局对象有很多坏处，<br>比如：别的函数可能误用这些变量；造成全局对象过于庞大，影响访问速度(因为变量的取值是需要从原型链上遍历的)。<br>除了每次使用变量都是用var关键字外，我们在实际情况下经常遇到这样一种情况，即有的函数只需要执行一次，其内部变量无需维护，<br>比如UI的初始化，那么我们可以使用闭包：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">var data= &#123;    </span><br><span class="line">    table : [],    </span><br><span class="line">    tree : &#123;&#125;    </span><br><span class="line">&#125;;    </span><br><span class="line">     </span><br><span class="line">(function(dm)&#123;    </span><br><span class="line">    for(var i = 0; i &lt; dm.table.rows; i++)&#123;    </span><br><span class="line">       var row = dm.table.rows[i];    </span><br><span class="line">       for(var j = 0; j &lt; row.cells; i++)&#123;    </span><br><span class="line">           drawCell(i, j);    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">       </span><br><span class="line">&#125;)(data);</span><br></pre></td></tr></table></figure>
+<p>我们创建了一个匿名的函数，并立即执行它，由于外部无法引用它内部的变量，因此在函数执行完后会立刻释放资源，关键是不污染全局对象。</p>
+<p>2、结果缓存</p>
+<p>我们开发中会碰到很多情况，设想我们有一个处理过程很耗时的函数对象，每次调用都会花费很长时间，</p>
+<p>那么我们就需要将计算出来的值存储起来，当调用这个函数的时候，首先在缓存中查找，如果找不到，则进行计算，然后更新缓存并返回值，如果找到了，直接返回查找到的值即可。闭包正是可以做到这一点，因为它不会释放外部的引用，从而函数内部的值可以得以保留。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">var CachedSearchBox = (function()&#123;    </span><br><span class="line">    var cache = &#123;&#125;,    </span><br><span class="line">       count = [];    </span><br><span class="line">    return &#123;    </span><br><span class="line">       attachSearchBox : function(dsid)&#123;    </span><br><span class="line">           if(dsid in cache)&#123;//如果结果在缓存中    </span><br><span class="line">              return cache[dsid];//直接返回缓存中的对象    </span><br><span class="line">           &#125;    </span><br><span class="line">           var fsb = new uikit.webctrl.SearchBox(dsid);//新建    </span><br><span class="line">           cache[dsid] = fsb;//更新缓存    </span><br><span class="line">           if(count.length &gt; 100)&#123;//保正缓存的大小&lt;=100    </span><br><span class="line">              delete cache[count.shift()];    </span><br><span class="line">           &#125;    </span><br><span class="line">           return fsb;          </span><br><span class="line">       &#125;,    </span><br><span class="line">     </span><br><span class="line">       clearSearchBox : function(dsid)&#123;    </span><br><span class="line">           if(dsid in cache)&#123;    </span><br><span class="line">              cache[dsid].clearSelection();      </span><br><span class="line">           &#125;    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;;    </span><br><span class="line">&#125;)();    </span><br><span class="line">     </span><br><span class="line">CachedSearchBox.attachSearchBox(&quot;input&quot;);</span><br></pre></td></tr></table></figure>
+<p>这样我们在第二次调用的时候，就会从缓存中读取到该对象。</p>
+<p>3、封装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var person = function()&#123;    </span><br><span class="line">    //变量作用域为函数内部，外部无法访问    </span><br><span class="line">    var name = &quot;default&quot;;       </span><br><span class="line">       </span><br><span class="line">    return &#123;    </span><br><span class="line">       getName : function()&#123;    </span><br><span class="line">           return name;    </span><br><span class="line">       &#125;,    </span><br><span class="line">       setName : function(newName)&#123;    </span><br><span class="line">           name = newName;    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">&#125;();    </span><br><span class="line">     </span><br><span class="line">print(person.name);//直接访问，结果为undefined    </span><br><span class="line">print(person.getName());    </span><br><span class="line">person.setName(&quot;abruzzi&quot;);    </span><br><span class="line">print(person.getName());    </span><br><span class="line">   </span><br><span class="line">得到结果如下：  </span><br><span class="line">   </span><br><span class="line">undefined  </span><br><span class="line">default  </span><br><span class="line">abruzzi</span><br></pre></td></tr></table></figure>
+<p>4、实现类和继承</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">function Person()&#123;    </span><br><span class="line">    var name = &quot;default&quot;;       </span><br><span class="line">       </span><br><span class="line">    return &#123;    </span><br><span class="line">       getName : function()&#123;    </span><br><span class="line">           return name;    </span><br><span class="line">       &#125;,    </span><br><span class="line">       setName : function(newName)&#123;    </span><br><span class="line">           name = newName;    </span><br><span class="line">       &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    &#125;;   </span><br><span class="line"></span><br><span class="line">    var p = new Person();</span><br><span class="line">    p.setName(&quot;Tom&quot;);</span><br><span class="line">    alert(p.getName());</span><br><span class="line"></span><br><span class="line">    var Jack = function()&#123;&#125;;</span><br><span class="line">    //继承自Person</span><br><span class="line">    Jack.prototype = new Person();</span><br><span class="line">    //添加私有方法</span><br><span class="line">    Jack.prototype.Say = function()&#123;</span><br><span class="line">        alert(&quot;Hello,my name is Jack&quot;);</span><br><span class="line">    &#125;;</span><br><span class="line">    var j = new Jack();</span><br><span class="line">    j.setName(&quot;Jack&quot;);</span><br><span class="line">    j.Say();</span><br><span class="line">    alert(j.getName());</span><br></pre></td></tr></table></figure>
+<p>我们定义了Person，它就像一个类，我们new一个Person对象，访问它的方法。</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、什么是闭包和闭包的几种写法和用法"><span class="nav-text">一、什么是闭包和闭包的几种写法和用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Javascript闭包的用途"><span class="nav-text">二、Javascript闭包的用途</span></a></li></ol></div>
+      
+    </div>
+  </section>
+
+</div>
+
+
+  </div>
+  <style>
+   p{
+      margin-top:10px;
+      font-size:14px;
+      font-family:SimSun;
+   }
+  </style>
+  <div style="text-align:center; line-height:15px;">
+  <p>hello!大家好！</p></br>
+  <p>本人是一名在读大三学生</p></br>
+  <p>现主要攻读前端方向，会逐步向后端进军</p></br>
+  <p>博客记录了我学习的过程，有转载内容，也有一些学习的笔记</p></br>
+  <p>如果有疑问或者需要交流的地方，可以加我<strong>wechat:yuhua1234abc</strong></p>
+  </div>
+  <footer class="post-footer">
+    
+      <div class="post-tags">
+        
+          <a href="/tags#闭包" rel="tag">#闭包</a>
+        
+      </div>
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一瓶肥宅快乐水，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/img/donation.png" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+  <div class="comments" id="comments">
+	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjg5Mi8xMzQyOA=="></div>
+    
+  </div>
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy; 
+    <span itemprop="copyrightYear">2018</span>
+    <span class="author" itemprop="copyrightHolder">Kiros</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('5/28/2018');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+  
+<script type="text/javascript"
+color="0,0,255" opacity='0.4' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+undefined
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":false},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/love.js"></script>  -->
+</html>

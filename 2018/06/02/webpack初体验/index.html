@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="Kiros, 314401009@qq.com">
+<meta name="reply-to" content="314401009@qq.com">
+<meta name="owner" content="Kiros">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="welcome to Kiros'blog" />
+
+
+
+
+<meta name="keywords" content="webpack," />
+
+
+<meta name="description" content="如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。 对于模块的组织，通常有如下几种方法： 通过书写在不同文件中，使用script标签进行加载CommonJS进行加载（NodeJS就使用这种方式）AMD进行加载（require.js使用这种方式）ES6模块    思考：为什么只有JS需要被模块化管理，前台的很多">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack初体验">
+<meta property="og:url" content="https://www.kiros.club/2018/06/02/webpack初体验/index.html">
+<meta property="og:site_name" content="Kiros">
+<meta property="og:description" content="如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。 对于模块的组织，通常有如下几种方法： 通过书写在不同文件中，使用script标签进行加载CommonJS进行加载（NodeJS就使用这种方式）AMD进行加载（require.js使用这种方式）ES6模块    思考：为什么只有JS需要被模块化管理，前台的很多">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.kiros.club/2018/06/02/webpack初体验/01.png">
+<meta property="og:updated_time" content="2018-06-02T15:36:12.486Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack初体验">
+<meta name="twitter:description" content="如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。 对于模块的组织，通常有如下几种方法： 通过书写在不同文件中，使用script标签进行加载CommonJS进行加载（NodeJS就使用这种方式）AMD进行加载（require.js使用这种方式）ES6模块    思考：为什么只有JS需要被模块化管理，前台的很多">
+<meta name="twitter:image" content="https://www.kiros.club/2018/06/02/webpack初体验/01.png">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+  <title> webpack初体验 </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header" style="background: url(/img/03.jpg) center / cover">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="webpack初体验"> webpack初体验 </h1>
+
+        
+        <div class="post-meta">
+          <div class="post-time">
+            发表于
+            <time  datetime="2018-06-02T22:28:01+08:00" content="2018-06-02">
+              2018-06-02
+            </time>
+          </div>
+
+          
+            <div class="post-category" >
+              
+                <span>
+                  <a href="/categories#模块打包器" itemprop="url" rel="index">
+                    <span itemprop="name">模块打包器</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </div>
+          
+
+          
+            
+          
+        </div>
+        
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+        
+        <a class="nav-link" href="/project" rel="section">
+          项目
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><p>如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。</p>
+<p>对于模块的组织，通常有如下几种方法：</p>
+<p>通过书写在不同文件中，使用script标签进行加载<br>CommonJS进行加载（NodeJS就使用这种方式）<br>AMD进行加载（require.js使用这种方式）<br>ES6模块<br>    思考：为什么只有JS需要被模块化管理，前台的很多预编译内容，不需要管理吗？</p>
+<p>基于以上的思考，WebPack项目有如下几个目标：</p>
+<p>1、将依赖树拆分，保证按需加载<br>2、保证初始加载的速度<br>3、所有静态资源可以被模块化<br>4、可以整合第三方的库和模块<br>5、可以构造大系统<br>6、从下图可以比较清晰的看出WebPack的功能<br><img src="/2018/06/02/webpack初体验/01.png" title="webpack功能图"></p>
+<p>这是一个示意图<br>WebPack的特点<br>1、丰富的插件，方便进行开发工作<br>2、大量的加载器，包括加载各种静态资源<br>3、代码分割，提供按需加载的能力<br>4、发布工具</p>
+<h2 id="WebPack的优势"><a href="#WebPack的优势" class="headerlink" title="WebPack的优势"></a>WebPack的优势</h2><p>webpack 是以 commonJS 的形式来书写脚本滴，但对 AMD/CMD 的支持也很全面，方便旧项目进行代码迁移。<br>能被模块化的不仅仅是 JS 了。<br>开发便捷，能替代部分 grunt/gulp 的工作，比如打包、压缩混淆、图片转base64等。<br>扩展性强，插件机制完善，特别是支持 React 热插拔（见 react-hot-loader ）的功能让人眼前一亮。</p>
+<h2 id="WebPack的安装"><a href="#WebPack的安装" class="headerlink" title="WebPack的安装"></a>WebPack的安装</h2><p>安装命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure></p>
+<p>使用webpack<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm init  # 会自动生成一个package.json文件</span><br><span class="line">$ npm install webpack --save-dev #将webpack增加到package.json文件中</span><br></pre></td></tr></table></figure></p>
+<p>可以使用不同的版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack@1.2.x --save-dev</span><br></pre></td></tr></table></figure></p>
+<p>如果想要安装开发工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack-dev-server --save-dev</span><br></pre></td></tr></table></figure></p>
+<h2 id="WebPack的配置"><a href="#WebPack的配置" class="headerlink" title="WebPack的配置"></a>WebPack的配置</h2><p>每个项目下都必须配置有一个 webpack.config.js ，它的作用如同常规的 gulpfile.js/Gruntfile.js ，就是一个配置项，告诉 webpack 它需要做什么。</p>
+<p>下面是一个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">var webpack = require(&apos;webpack&apos;);</span><br><span class="line">var commonsPlugin = new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;);</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    //插件项</span><br><span class="line">    plugins: [commonsPlugin],</span><br><span class="line">    //页面入口文件配置</span><br><span class="line">    entry: &#123;</span><br><span class="line">        index : &apos;./src/js/page/index.js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    //入口文件输出配置</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: &apos;dist/js/page&apos;,</span><br><span class="line">        filename: &apos;[name].js&apos;</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        //加载器配置</span><br><span class="line">        loaders: [</span><br><span class="line">            &#123; test: /\.css$/, loader: &apos;style-loader!css-loader&apos; &#125;,</span><br><span class="line">            &#123; test: /\.js$/, loader: &apos;jsx-loader?harmony&apos; &#125;,</span><br><span class="line">            &#123; test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;&#125;,</span><br><span class="line">            &#123; test: /\.(png|jpg)$/, loader: &apos;url-loader?limit=8192&apos;&#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    //其它解决方案配置</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        //查找module的话从这里开始查找</span><br><span class="line">        root: &apos;E:/github/flux-example/src&apos;, //绝对路径</span><br><span class="line">        //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名</span><br><span class="line">        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.json&apos;, &apos;.scss&apos;],</span><br><span class="line">        //模块别名定义，方便后续直接引用别名，无须多写长长的地址</span><br><span class="line">        alias: &#123;</span><br><span class="line">            AppStore : &apos;js/stores/AppStores.js&apos;,</span><br><span class="line">            ActionType : &apos;js/actions/ActionType.js&apos;,</span><br><span class="line">            AppAction : &apos;js/actions/AppAction.js&apos;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>plugins 是插件项，这里我们使用了一个 CommonsChunkPlugin的插件，它用于提取多个入口文件的公共脚本部分，然后生成一个 common.js 来方便多页面之间进行复用。<br>entry 是页面入口文件配置，output 是对应输出项配置 （即入口文件最终要生成什么名字的文件、存放到哪里）<br>module.loaders 是最关键的一块配置。它告知 webpack 每一种文件都需要使用什么加载器来处理。 所有加载器需要使用npm来加载<br>最后是 resolve 配置，配置查找模块的路径和扩展名和别名（方便书写）</p>
+<h2 id="WebPack开始使用"><a href="#WebPack开始使用" class="headerlink" title="WebPack开始使用"></a>WebPack开始使用</h2><p>这里有最基本的使用方法，给大家一个感性的认识</p>
+<p>正确安装了WebPack，方法可以参考上面<br>书写entry.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">document.write(&quot;看看如何让它工作！&quot;);</span><br><span class="line">书写index.html文件</span><br><span class="line">&lt;html&gt;</span><br><span class="line"> &lt;head&gt;</span><br><span class="line"> &lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line"> &lt;/head&gt;</span><br><span class="line"> &lt;body&gt;</span><br><span class="line"> &lt;script type=&quot;text/javascript&quot; src=&quot;bundle.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;</span><br><span class="line"> &lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>执行命令，生成bundle.js文件<br>$ webpack ./entry.js bundle.js<br>在浏览器中打开index.html文件，可以正常显示出预期<br>增加一个content.js文件<br>module.exports = “现在的内容是来自于content.js文件！”;<br>修改entry.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.write(require(&quot;./content.js&quot;));</span><br></pre></td></tr></table></figure></p>
+<p>执行第四步的命令<br>进行加载器试验</p>
+<p>增加style.css文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">body &#123;</span><br><span class="line"> background: yellow;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>修改entry.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">require(&quot;!style-loader!css-loader!./style.css&quot;);</span><br><span class="line">document.write(require(&quot;./content.js&quot;));</span><br></pre></td></tr></table></figure></p>
+<p>执行命令，安装加载器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install css-loader style-loader   # 安装的时候不使用 -g</span><br></pre></td></tr></table></figure></p>
+<p>执行webpack命令，运行看效果<br>可以在命令行中使用loader<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack ./entry.js bundle.js --module-bind &quot;css=style-loader!css-loader&quot;</span><br></pre></td></tr></table></figure></p>
+<p>使用配置文件<br>默认的配置文件为webpack.config.js</p>
+<p>增加webpack.config.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">module.exports = &#123;</span><br><span class="line">    entry: &quot;./entry.js&quot;,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: __dirname,</span><br><span class="line">        filename: &quot;bundle.js&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    module: &#123;</span><br><span class="line">        loaders: [</span><br><span class="line">            &#123; test: /\.css$/, loader: &quot;style-loader!css-loader&quot; &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>执行程序<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ webpack</span><br></pre></td></tr></table></figure></p>
+<p>发布服务器</p>
+<p>安装服务器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack-dev-server -g</span><br><span class="line">$ webpack-dev-server --progress --colors</span><br></pre></td></tr></table></figure></p>
+<p>服务器可以自动生成和刷新，修改代码保存后自动更新画面<br><a href="http://localhost:8080/webpack-dev-server/bundle" target="_blank" rel="noopener">http://localhost:8080/webpack-dev-server/bundle</a></p>
+<h2 id="WebPack常用命令"><a href="#WebPack常用命令" class="headerlink" title="WebPack常用命令"></a>WebPack常用命令</h2><p>$ webpack –display-error-details<br>后面的参数“–display-error-details”是推荐加上的，方便出错时能查阅更详尽的信息（比如 webpack 寻找模块的过程），从而更好定位到问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ webpack --config XXX.js //使用另一份配置文件（比如webpack.config2.js）来打包</span><br><span class="line">$ webpack --watch //监听变动并自动打包</span><br><span class="line">$ webpack -p //压缩混淆脚本，这个非常非常重要！</span><br><span class="line">$ webpack -d //生成map映射文件，告知哪些模块被最终打包到哪里了</span><br></pre></td></tr></table></figure></p>
+<p>作者：hutou<br>來源：简书</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebPack的优势"><span class="nav-text">WebPack的优势</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebPack的安装"><span class="nav-text">WebPack的安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebPack的配置"><span class="nav-text">WebPack的配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebPack开始使用"><span class="nav-text">WebPack开始使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WebPack常用命令"><span class="nav-text">WebPack常用命令</span></a></li></ol></div>
+      
+    </div>
+  </section>
+
+</div>
+
+
+  </div>
+  <style>
+   p{
+      margin-top:10px;
+      font-size:14px;
+      font-family:SimSun;
+   }
+  </style>
+  <div style="text-align:center; line-height:15px;">
+  <p>hello!大家好！</p></br>
+  <p>本人是一名在读大三学生</p></br>
+  <p>现主要攻读前端方向，会逐步向后端进军</p></br>
+  <p>博客记录了我学习的过程，有转载内容，也有一些学习的笔记</p></br>
+  <p>如果有疑问或者需要交流的地方，可以加我<strong>wechat:yuhua1234abc</strong></p>
+  </div>
+  <footer class="post-footer">
+    
+      <div class="post-tags">
+        
+          <a href="/tags#webpack" rel="tag">#webpack</a>
+        
+      </div>
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一瓶肥宅快乐水，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/img/donation.png" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+  <div class="comments" id="comments">
+	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjg5Mi8xMzQyOA=="></div>
+    
+  </div>
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy; 
+    <span itemprop="copyrightYear">2018</span>
+    <span class="author" itemprop="copyrightHolder">Kiros</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('5/28/2018');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+  
+<script type="text/javascript"
+color="0,0,255" opacity='0.4' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+undefined
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":false},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/love.js"></script>  -->
+</html>

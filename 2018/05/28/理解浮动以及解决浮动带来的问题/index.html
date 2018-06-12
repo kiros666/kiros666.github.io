@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="Kiros, 314401009@qq.com">
+<meta name="reply-to" content="314401009@qq.com">
+<meta name="owner" content="Kiros">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="welcome to Kiros'blog" />
+
+
+
+
+<meta name="keywords" content="float,浮动问题," />
+
+
+<meta name="description" content="要解决浮动带来的各种问题，首先我们得了解浮动的特点和造成的问题，方能对症下药。 一、浮动的特点在CSS2.1 规范中，对浮动的解释如下： A float is a box that is shifted to the left or right on the current line.  A floated box is shifted to the left or right until its">
+<meta name="keywords" content="float,浮动问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="理解浮动以及解决浮动带来的问题">
+<meta property="og:url" content="https://www.kiros.club/2018/05/28/理解浮动以及解决浮动带来的问题/index.html">
+<meta property="og:site_name" content="Kiros">
+<meta property="og:description" content="要解决浮动带来的各种问题，首先我们得了解浮动的特点和造成的问题，方能对症下药。 一、浮动的特点在CSS2.1 规范中，对浮动的解释如下： A float is a box that is shifted to the left or right on the current line.  A floated box is shifted to the left or right until its">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-02T15:38:02.900Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="理解浮动以及解决浮动带来的问题">
+<meta name="twitter:description" content="要解决浮动带来的各种问题，首先我们得了解浮动的特点和造成的问题，方能对症下药。 一、浮动的特点在CSS2.1 规范中，对浮动的解释如下： A float is a box that is shifted to the left or right on the current line.  A floated box is shifted to the left or right until its">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+  <title> 理解浮动以及解决浮动带来的问题 </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header" style="background: url(/img/02.jpg) center / cover">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="理解浮动以及解决浮动带来的问题"> 理解浮动以及解决浮动带来的问题 </h1>
+
+        
+        <div class="post-meta">
+          <div class="post-time">
+            发表于
+            <time  datetime="2018-05-28T00:00:00+08:00" content="2018-05-28">
+              2018-05-28
+            </time>
+          </div>
+
+          
+            <div class="post-category" >
+              
+                <span>
+                  <a href="/categories#浮动问题" itemprop="url" rel="index">
+                    <span itemprop="name">浮动问题</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </div>
+          
+
+          
+        </div>
+        
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+        
+        <a class="nav-link" href="/project" rel="section">
+          项目
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><p>要解决浮动带来的各种问题，首先我们得了解浮动的特点和造成的问题，方能对症下药。</p>
+<h2 id="一、浮动的特点"><a href="#一、浮动的特点" class="headerlink" title="一、浮动的特点"></a>一、浮动的特点</h2><p>在CSS2.1 规范中，对浮动的解释如下：</p>
+<p>A float is a box that is shifted to the left or right on the current line. </p>
+<p>A floated box is shifted to the left or right until its outer edge touches the containing block edge or the outer edge of another float. If there is a line box, the outer top of the floated box is aligned with the top of the current line box.</p>
+<p>If there is not enough horizontal room for the float, it is shifted downward until either it fits or there are no more floats present.</p>
+<p>浮动元素脱离文档流，在当前行的左边或是右边对齐，如果当前行没有足够的空间，它将下移一行，直到有足够的空间。浮动元素碰到包含它的边框或者浮动元素的边框停留。</p>
+<h2 id="二、浮动造成的问题"><a href="#二、浮动造成的问题" class="headerlink" title="二、浮动造成的问题"></a>二、浮动造成的问题</h2><p>（1）父元素的高度无法被撑开</p>
+<p>关于这个一点，就不演示了。</p>
+<p>（2）浮动元素前同级非浮动元素：</p>
+<p>若为：行内元素</p>
+<p>当行内元素被撑起的宽度加上浮动元素的宽度，大于父元素的宽度时，浮动元素，就会下移一个line-height，直到计算的值小于父元素的宽度时，非浮动元素会跟随其后，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot; height:500px;background-color:#0f0&quot;&gt;         </span><br><span class="line">    &lt;span  style=&quot;background-color:#ff0; line-height:35px;&quot; &gt;  </span><br><span class="line">        浮动元素脱离文档流，向左或是向右浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离,浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离浮动元素脱离文档流，向左或是向右浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离,浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离  </span><br><span class="line">    &lt;/span&gt;  </span><br><span class="line">   </span><br><span class="line">    &lt;div  style=&quot;width:100px; height:500px;background-color:#f00; float:left; display:-inline-block&quot; &gt;  </span><br><span class="line">           </span><br><span class="line">    &lt;/div&gt;          </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>若为：块内元素</p>
+<p>浮动元素会在块内元素下一行进行浮动。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">" height:500px;background-color:#0f0"</span>&gt;         </span><br><span class="line">    &lt;div  style=<span class="string">"line-height:35px;"</span> &gt;  </span><br><span class="line">        浮动元素脱离文档流，向左或是向右浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离,浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离浮动元素脱离文档流，向左或是向右浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离,浮动，不占据空间。浮动元素碰到包含它的边框或者浮动元素的边框停留,浮动元素脱离  </span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">   </span><br><span class="line">    &lt;div  style=<span class="string">"width:100px; height:500px;background-color:#f00; float:left;"</span> &gt;  </span><br><span class="line">           </span><br><span class="line">    &lt;/div&gt;          </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>（3）浮动元素后同级非浮动元素：</p>
+<p>无论是行内元素，还是块内元素，都会会紧随浮动元素之后，也就是说同一水平的line boxes都被压缩了，这也是文字环绕图片的原因。但是从黄色边框的div的位置可以看出，其在定位上，并没有受到浮动元素的影响。具体效果如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">"background-color:#0f0; border:5px solid #000; padding:10px"</span>&gt;   </span><br><span class="line">    黑色表框为最外层包裹元素  </span><br><span class="line">    &lt;div  style=<span class="string">"width:100px; height:500px;border:1px solid #F00; float:left; color:#F00"</span> &gt;  </span><br><span class="line">        红色边框的为左浮动元素  </span><br><span class="line">    &lt;/div&gt;      </span><br><span class="line">   </span><br><span class="line">    &lt;div  style=<span class="string">"line-height:35px; width:800px;border:5px solid #FF0; min-height:200px; color:#FF0"</span> &gt;  </span><br><span class="line">        黄色表框的为这是块内元素  </span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">   </span><br><span class="line">    &lt;span  style=<span class="string">"line-height:35px; border:5px solid #F0F; color:#F0F"</span> &gt;  </span><br><span class="line">        黄色表框的为这是行内元素  </span><br><span class="line">    &lt;/span&gt;                 </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>（4）浮动元素对浮动元素的影响</p>
+<pre><code>同一个方向的浮动元素：当一个浮动元素在浮动过程中碰到同一个方向的浮动元素时，它会紧跟在它们后面，当空间不够时会被挤下。
+</code></pre><p>反方向的浮动元素：互不影响，位于同一条水平线上，当空间不够时会被挤下。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=<span class="string">"background-color:#00f;"</span>&gt;  </span><br><span class="line">    &lt;div style=<span class="string">"border:1px solid #F00; width:200px; height:100px;float:left; margin-bottom:5px;"</span>&gt;     </span><br><span class="line">    浮动box 1  </span><br><span class="line">    &lt;/div&gt;  </span><br><span class="line">&lt;/div&gt;  </span><br><span class="line">   </span><br><span class="line">&lt;div style=<span class="string">"border:1px solid #F00; width:200px; height:100px;float:left; margin-bottom:5px;"</span>&gt;     </span><br><span class="line">    浮动box 2  </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="三、浮动的解决办法"><a href="#三、浮动的解决办法" class="headerlink" title="三、浮动的解决办法"></a>三、浮动的解决办法</h2><p>目前关于浮动问题的解决办法主要由以下两种：</p>
+<p>一是利用 clear 属性，包括在浮动元素末尾添加一个带有 clear: both 属性的空 div 来闭合元素，其实利用 :after 伪元素的方法也是在元素末尾添加一个内容为一个点并带有 clear: both 属性的元素实现的。如：</p>
+<p>①在浮动的元素后面添加一个能构成block-level boxes元素，设置style=”clear:both;”；</p>
+<p>②给浮动的父元素添加一个:after伪元素。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">.clearFloat:after &#123;  </span><br><span class="line">    content:<span class="string">""</span>; /*设置该区域的内容*/   </span><br><span class="line">    display:block; /*把该区域转为block-level boxes 因为clear对该类型的box有效，伪元素:before和:after添加的内容默认是inline元素*/   </span><br><span class="line">    clear:both;  /*清除浮动*/  </span><br><span class="line">    visibility: hidden; /*不显示该区域,其实上面设置了content为空，这一行可以省略*/  </span><br><span class="line">&#125;   </span><br><span class="line">/*bootstratp3.1.0 中 解决浮动问题的*/  </span><br><span class="line">.clearfix:before,.clearfix:after&#123;  </span><br><span class="line">     display: table;  </span><br><span class="line">       content: <span class="string">" "</span>  </span><br><span class="line">&#125;  </span><br><span class="line">.clearfix:after&#123;  </span><br><span class="line">    clear: both;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有的时候，为了兼容IE，还得添加一个.clearfix{*zoom:1}。为什么要使用到before呢？这个是防止margin折叠的，关于margin折叠，可以查看css手册8.3.1 Collapsing margins</p>
+<p>二是：利用BFC (Block Formatting Contexts, 块级格式化上下文)特性：:BFC就是页面上的一个隔离的独立容器，不会与其他Box发生折叠（即使元素浮动），容器里面的子元素不会影响到外面的元素，反之也如此。关于这一点，可以“理解CSS中的BFC块级格式化上下文”。如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">div style=<span class="string">"background-color:#00f; display:table"</span>&gt;  </span><br><span class="line">        &lt;div style=<span class="string">" width:200px; height:50px; float:left; border:1px solid #f00; "</span>&gt;    </span><br><span class="line">        &lt;/div&gt;  </span><br><span class="line">&lt;/div&gt;  </span><br><span class="line">&lt;div style=<span class="string">"border:1px solid #0Ff ;width:200px;  height:50px; margin-top:15px; float:left;"</span>&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>浮动的父元素，通过设置display等于table（当然“理解CSS中的BFC块级格式化上下文”里，还有其他很多方式哦），拥有了BFC，就能解决浮动塌方问题，同时也解决了浮动元素对浮动元素的影响。由于创建BFC方式来解决浮动带来的问题，往往会改变父元素的某些特性，在实际开发中，采用的不是很多。</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、浮动的特点"><span class="nav-text">一、浮动的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、浮动造成的问题"><span class="nav-text">二、浮动造成的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、浮动的解决办法"><span class="nav-text">三、浮动的解决办法</span></a></li></ol></div>
+      
+    </div>
+  </section>
+
+</div>
+
+
+  </div>
+  <style>
+   p{
+      margin-top:10px;
+      font-size:14px;
+      font-family:SimSun;
+   }
+  </style>
+  <div style="text-align:center; line-height:15px;">
+  <p>hello!大家好！</p></br>
+  <p>本人是一名在读大三学生</p></br>
+  <p>现主要攻读前端方向，会逐步向后端进军</p></br>
+  <p>博客记录了我学习的过程，有转载内容，也有一些学习的笔记</p></br>
+  <p>如果有疑问或者需要交流的地方，可以加我<strong>wechat:yuhua1234abc</strong></p>
+  </div>
+  <footer class="post-footer">
+    
+      <div class="post-tags">
+        
+          <a href="/tags#float" rel="tag">#float</a>
+        
+          <a href="/tags#浮动问题" rel="tag">#浮动问题</a>
+        
+      </div>
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一瓶肥宅快乐水，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/img/donation.png" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy; 
+    <span itemprop="copyrightYear">2018</span>
+    <span class="author" itemprop="copyrightHolder">Kiros</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('5/28/2018');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+  
+<script type="text/javascript"
+color="0,0,255" opacity='0.4' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+undefined
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":false},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/love.js"></script>  -->
+</html>
