@@ -96,7 +96,6 @@ function  drawBackground() {
     function draw() {
         ctx.clearRect(0,0,width, height);
         drawBackground();
-        drawDot();
         var now = new Date();
         var hour = now.getHours();
         var minute = now.getMinutes();
@@ -104,6 +103,7 @@ function  drawBackground() {
         drawMinute(minute,second);
         drawHour(hour,minute);
         drawSecond(second);
+		drawDot();
         ctx.restore();
     }
 draw();
