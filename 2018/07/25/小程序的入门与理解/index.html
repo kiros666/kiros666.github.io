@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- content-Type -->
+<meta charset="utf-8">
+
+
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="language" content="en">
+<meta name="robots" content="all">
+
+
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+<meta name="author" content="Kiros, 314401009@qq.com">
+<meta name="reply-to" content="314401009@qq.com">
+<meta name="owner" content="Kiros">
+
+
+
+
+<meta name="google-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="baidu-site-verification" content="xxxxxxxxxx" />
+
+
+
+
+<meta name="description" content="welcome to Kiros'blog" />
+
+
+
+
+<meta name="keywords" content="小程序," />
+
+
+<meta name="description" content="一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：1.app.js2.app.json3.app.wxss 而一个小程序页面由四个文件组成的1.js2.wxml3.wxss4.json 二、主文件的配置1.app.js   主要写全局js2.app.json   对小程序进行全局配置，决定页面文件的路径、窗口的显示情况、设置网络超时时间、设置多个tab等。   其中pages接收一">
+<meta name="keywords" content="小程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小程序的入门与理解">
+<meta property="og:url" content="https://www.kiros.club/2018/07/25/小程序的入门与理解/index.html">
+<meta property="og:site_name" content="Kiros">
+<meta property="og:description" content="一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：1.app.js2.app.json3.app.wxss 而一个小程序页面由四个文件组成的1.js2.wxml3.wxss4.json 二、主文件的配置1.app.js   主要写全局js2.app.json   对小程序进行全局配置，决定页面文件的路径、窗口的显示情况、设置网络超时时间、设置多个tab等。   其中pages接收一">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-07-25T15:55:17.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小程序的入门与理解">
+<meta name="twitter:description" content="一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：1.app.js2.app.json3.app.wxss 而一个小程序页面由四个文件组成的1.js2.wxml3.wxss4.json 二、主文件的配置1.app.js   主要写全局js2.app.json   对小程序进行全局配置，决定页面文件的路径、窗口的显示情况、设置网络超时时间、设置多个tab等。   其中pages接收一">
+
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/favicon.ico?v=0.0.2" />
+
+
+
+
+
+
+<link href="http://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.0.2"/>
+
+
+<script>
+(function(){
+  var bp = document.createElement('script');
+  bp.src = '//push.zhanzhang.baidu.com/push.js';
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bp, s);
+})();
+  <title> 小程序的入门与理解 </title>
+  
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'xxxxxxxxxx', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxx";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+</head>
+<body lang="zh-Hans">
+
+
+  <!--[if lte IE 9]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+
+  <div class="another-theme layout">
+
+    
+<header class="header" id="header" style="background: url(/img/07.jpg) center / cover">
+
+  <div class="header-cont">
+    <div class="text-area">
+      
+        <h1 class="title" data-text="小程序的入门与理解"> 小程序的入门与理解 </h1>
+
+        
+        <div class="post-meta">
+          <div class="post-time">
+            发表于
+            <time  datetime="2018-07-25T22:27:05+08:00" content="2018-07-25">
+              2018-07-25
+            </time>
+          </div>
+
+          
+            <div class="post-category" >
+              
+                <span>
+                  <a href="/categories#小程序" itemprop="url" rel="index">
+                    <span itemprop="name">小程序</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </div>
+          
+
+          
+            
+          
+        </div>
+        
+      
+    </div>
+    <!-- Navigation -->
+    
+    <nav class="navigation clearfix" id="navigation">
+      
+        
+        <a class="nav-link" href="/" rel="section">
+          首页
+        </a>
+      
+        
+        <a class="nav-link" href="/categories" rel="section">
+          分类
+        </a>
+      
+        
+        <a class="nav-link" href="/tags" rel="section">
+          标签
+        </a>
+      
+        
+        <a class="nav-link" href="/about" rel="section">
+          关于
+        </a>
+      
+        
+        <a class="nav-link" href="/project" rel="section">
+          项目
+        </a>
+      
+    </nav>
+    
+  </div>
+  <div class="mask"></div>
+
+</header>
+
+
+    <main class="container">
+
+      
+
+  <article class="post-article post-type-normal post" itemscope>
+
+  <div class="post-body">
+
+    <div class="content markdown-body"><h2 id="一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下："><a href="#一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：" class="headerlink" title="一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下："></a>一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：</h2><p>1.app.js<br>2.app.json<br>3.app.wxss</p>
+<p>而一个小程序页面由四个文件组成的<br>1.js<br>2.wxml<br>3.wxss<br>4.json</p>
+<h2 id="二、主文件的配置"><a href="#二、主文件的配置" class="headerlink" title="二、主文件的配置"></a>二、主文件的配置</h2><p>1.app.js<br>   主要写全局js<br>2.app.json<br>   对小程序进行全局配置，决定页面文件的路径、窗口的显示情况、设置网络超时时间、设置多个tab等。<br>   其中pages接收一个数组，并且每一项代表对应的页面的【路径+文件】，如果要新增一个页面，可以在这里面配置好保存，然后就会自动生成。<br>3.app.wxss</p>
+<p>待续……</p>
+</div>
+
+    <div class="post-sidebar">
+  <div class="toggle-btn" id="toggle-btn">
+    <i class="fa fa-reorder"></i>
+  </div>
+  <section class="post-toc-wrap" id="post-sidebar">
+    <h2 class="toc-title">内容目录</h2>
+    <div class="post-toc">
+      
+      
+        <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下："><span class="nav-text">一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、主文件的配置"><span class="nav-text">二、主文件的配置</span></a></li></ol></div>
+      
+    </div>
+  </section>
+
+</div>
+
+
+  </div>
+  <style>
+   p{
+      margin-top:10px;
+      font-size:14px;
+      font-family:SimSun;
+   }
+  </style>
+  <div style="text-align:center; line-height:15px;">
+  <p>hello!大家好！</p></br>
+  <p>本人是一名在读大三学生</p></br>
+  <p>现主要攻读前端方向，会逐步向后端进军</p></br>
+  <p>博客记录了我学习的过程，有转载内容，也有一些学习的笔记</p></br>
+  <p>如果有疑问或者需要交流的地方，可以加我<strong>wechat:yuhua1234abc</strong></p>
+  </div>
+  <footer class="post-footer">
+    
+      <div class="post-tags">
+        
+          <a href="/tags#小程序" rel="tag">#小程序</a>
+        
+      </div>
+    
+    
+  <style>
+    .donation {
+      width: 100%;
+      margin-top: 2rem;
+    }
+    .donation .text {
+      color: #333;
+      font-size: .8rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .donation .text:hover {
+      color: rgb(63,134,181);
+    }
+    .donation .img-box {
+      transition: all .3s;
+      width: 0;
+      height: 0;
+      margin: 1rem auto;
+      overflow: hidden;
+    }
+    .donation .img-box img {
+      width: 100%;
+      height: 100%;
+    }
+    .donation #donation {
+      display: none;
+    }
+    .donation #donation:checked + .img-box {
+      width: 16rem;
+      height: 16rem;
+    }
+  </style>
+  <div class="donation">
+    <label class="text" for="donation">
+      如果你觉得文章对你有帮助，并且想为我买一瓶肥宅快乐水，点这里～
+    </label>
+    <input type="checkbox" name="donation" id="donation">
+    <div class="img-box">
+      <img src="/img/donation.png" alt="donation" />
+    </div>
+  </div>
+
+
+  </footer>
+
+</article>
+
+
+
+
+      
+  <div class="comments" id="comments">
+	
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8zNjg5Mi8xMzQyOA=="></div>
+    
+  </div>
+
+
+
+    </main>
+
+    <footer class="footer clearfix">
+  <div class="copyright" >
+    <span>Copyright</span>
+    
+    &copy; 
+    <span itemprop="copyrightYear">2018</span>
+    <span class="author" itemprop="copyrightHolder">Kiros</span>
+  </div>
+
+  <div class="info">
+    <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    
+      <span id="showDays" class="show-days"></span>
+      <script>
+      var birthDay = new Date('5/28/2018');
+      var now = new Date();
+      var duration = now.getTime() - birthDay.getTime();
+      var total= Math.floor(duration / (1000 * 60 * 60 * 24));
+      document.getElementById("showDays").innerHTML = "本站已运行 "+total+" 天";
+      </script>
+      ---
+    
+    <span id="busuanzi_container_site_pv">
+        总访问量<span id="busuanzi_value_site_pv"></span>次
+    </span>
+  </div>
+
+</footer>
+
+
+  </div>
+
+  <div class="back-top-btn" id="back-top-btn"><i class="fa fa-chevron-up"></i></div>
+  
+<script type="text/javascript"
+color="0,0,255" opacity='0.4' zIndex="-2" count="80" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/motto.min.js?v=0.0.2"></script>
+<script type="text/javascript" src="/js/main.js?v=0.0.2"></script>
+
+undefined
+
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/fireworks.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":80,"height":160},"mobile":{"show":false},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+<!-- 页面点击小红心 -->
+<!-- <script type="text/javascript" src="/js/love.js"></script>  -->
+</html>

@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[小程序的入门与理解]]></title>
+    <url>%2F2018%2F07%2F25%2F%E5%B0%8F%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E9%97%A8%E4%B8%8E%E7%90%86%E8%A7%A3%2F</url>
+    <content type="text"><![CDATA[一、一个小程序主体部分由三个文件组成，必须放在项目的根目录，如下：1.app.js2.app.json3.app.wxss 而一个小程序页面由四个文件组成的1.js2.wxml3.wxss4.json 二、主文件的配置1.app.js 主要写全局js2.app.json 对小程序进行全局配置，决定页面文件的路径、窗口的显示情况、设置网络超时时间、设置多个tab等。 其中pages接收一个数组，并且每一项代表对应的页面的【路径+文件】，如果要新增一个页面，可以在这里面配置好保存，然后就会自动生成。3.app.wxss 待续……]]></content>
+      <categories>
+        <category>小程序</category>
+      </categories>
+      <tags>
+        <tag>小程序</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[git常用命令总结（一）]]></title>
     <url>%2F2018%2F06%2F19%2Fgit%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93%2F</url>
     <content type="text"><![CDATA[经过一晚上的打滚，总结一下关于git的常用命令。(后期还会更新） 远程仓库与本地仓库关联123456789101112131415161718192021222324252627//一、进入.ssh文件夹。cd ~/.ssh //若没有.ssh文件夹，则使用如下命令创建：mkdir ~/.ssh //二、配置name和emailgit config --global user.name &quot;lkt&quot; git config --global user.email &quot;lkt@temp.com&quot; //将命令中的name和email换成自己的。//三、生成key。ssh-keygen -t rsa -C “lkt@temp.com” //按三次回车，最后在.ssh文件夹下得到id_rsa和id_rsa.pub两个文件。id_rsa中的内容便是私钥，id_rsa.pub中的内容便是公钥。到这里ssh key就生成完毕了。 找到本地的公钥后，登录github，打开setting-ssh keys中，进行配置公钥。之后再通过以下命令实现本地仓库与远程仓库的关联1git remote add origin 仓库地址 git 克隆1234567//在对别人代码进行克隆的时候，可以以下命令：git clone 仓库地址//要是想有选择地克隆对方分支的文件，用这个：git clone -b 分支名称 仓库地址 git add1234//有选择地addgit add + 想要提交的文件名 git add 添加多个文件时，多个文件名之间用空格隔开 创建本地新分支1234567891011git branch 分支名称git checkout 分支名称 //切换本地分支git push origin 分支名 //其中origin指的是远程的仓库git branch -a //查看项目分支们git branch -d 分支名称 //删除本地分支git push origin --delete 分支名称 //删除远程分支 创建gh-pages分支进行项目演示123456git checkout --orphan gh-pages git add . //添加文件到暂存区git commit -m &quot;This is add message&quot; //添加信息，并把暂存区的所有修改提交到分支git push origin 分支名称 //提交到远程分支 合并分支1git merge --no-ff 分支名称 以上是小弟今晚的整理内容，后期有总结还会继续更新。 在简书上看到关于git的多人合作和分支管理，感觉写得很好，有兴趣可以看：传送们]]></content>
