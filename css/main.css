@@ -1354,7 +1354,7 @@ header.header .mask {
   width: 100%;
   top: 0;
   left: 0;
-  background-color: rgba(55,68,84,0.82);
+  background-color: rgba(55,68,84,0.35);
 }
 header.header .header-cont {
   position: absolute;
@@ -1377,7 +1377,7 @@ header.header .header-cont .text-area .title {
   margin: 0;
   color: #fff;
   font-weight: normal;
-  font-size: 1.6rem;
+  font-size: 2.5rem;
   position: relative;
   display: inline-block;
   animation: noise-anim 2s infinite linear alternate-reverse;
@@ -1388,7 +1388,7 @@ header.header .header-cont .text-area .description {
   margin: 0;
   color: rgba(255,255,255,0.8);
   font-weight: normal;
-  font-size: 0.8rem;
+  font-size: 1.25rem;
   line-height: 2em;
 }
 header.header .header-cont .post-meta {
