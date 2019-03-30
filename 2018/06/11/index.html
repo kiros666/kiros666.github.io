@@ -40,7 +40,7 @@
 
 
 
-<meta name="description" content="welcome to Kiros'blog" />
+<meta name="description" content="Kiros'blog" />
 
 
 
@@ -55,17 +55,14 @@
 <meta name="keywords" content="数据传输">
 <meta property="og:type" content="article">
 <meta property="og:title" content="json-xml学习笔记">
-<meta property="og:url" content="https://www.kiros.club/2018/06/11/json-xml学习笔记/index.html">
+<meta property="og:url" content="https://www.kiros.club/2018/06/11/index.html">
 <meta property="og:site_name" content="Kiros">
 <meta property="og:description" content="我们先来说说json与xml的区别： （1）可读性方面：基本相同，XML的可读性比较好； （2）可扩展性方面：都具有良好的扩展性； （3）编码难度方面：相对而言，JSON的编码比较容易； （4）解码难度：JSON的解码难度基本为零，XML需要考虑子节点和父节点； （5）数据体积方面：JSON相对于XML来讲，数据体积小，传递的速度比较快； （6）数据交互方面：JSON与javascript的交互更">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.kiros.club/2018/06/11/json-xml学习笔记/1.jpg">
-<meta property="og:image" content="https://www.kiros.club/2018/06/11/json-xml学习笔记/2.jpg">
 <meta property="og:updated_time" content="2018-06-11T14:16:49.009Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="json-xml学习笔记">
 <meta name="twitter:description" content="我们先来说说json与xml的区别： （1）可读性方面：基本相同，XML的可读性比较好； （2）可扩展性方面：都具有良好的扩展性； （3）编码难度方面：相对而言，JSON的编码比较容易； （4）解码难度：JSON的解码难度基本为零，XML需要考虑子节点和父节点； （5）数据体积方面：JSON相对于XML来讲，数据体积小，传递的速度比较快； （6）数据交互方面：JSON与javascript的交互更">
-<meta name="twitter:image" content="https://www.kiros.club/2018/06/11/json-xml学习笔记/1.jpg">
 
 
 
@@ -248,14 +245,14 @@
 <h2 id="XML-文档形成一种树结构"><a href="#XML-文档形成一种树结构" class="headerlink" title="XML 文档形成一种树结构"></a>XML 文档形成一种树结构</h2><p>XML 文档必须包含根元素。该元素是所有其他元素的父元素。</p>
 <p>XML 文档中的元素形成了一棵文档树。这棵树从根部开始，并扩展到树的最底端。</p>
 <p>所有元素均可拥有子元素：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;root&gt;</span><br><span class="line">  &lt;child&gt;</span><br><span class="line">    &lt;subchild&gt;.....&lt;/subchild&gt;</span><br><span class="line">  &lt;/child&gt;</span><br><span class="line">&lt;/root&gt;</span><br></pre></td></tr></table></figure></p>
-<img src="/2018/06/11/json-xml学习笔记/1.jpg" title="实例图">
+
 <p>上图表示下面的 XML 中的一本书：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;bookstore&gt;</span><br><span class="line">&lt;book category=&quot;COOKING&quot;&gt;</span><br><span class="line">  &lt;title lang=&quot;en&quot;&gt;Everyday Italian&lt;/title&gt; </span><br><span class="line">  &lt;author&gt;Giada De Laurentiis&lt;/author&gt; </span><br><span class="line">  &lt;year&gt;2005&lt;/year&gt; </span><br><span class="line">  &lt;price&gt;30.00&lt;/price&gt; </span><br><span class="line">&lt;/book&gt;</span><br><span class="line">&lt;book category=&quot;CHILDREN&quot;&gt;</span><br><span class="line">  &lt;title lang=&quot;en&quot;&gt;Harry Potter&lt;/title&gt; </span><br><span class="line">  &lt;author&gt;J K. Rowling&lt;/author&gt; </span><br><span class="line">  &lt;year&gt;2005&lt;/year&gt; </span><br><span class="line">  &lt;price&gt;29.99&lt;/price&gt; </span><br><span class="line">&lt;/book&gt;</span><br><span class="line">&lt;book category=&quot;WEB&quot;&gt;</span><br><span class="line">  &lt;title lang=&quot;en&quot;&gt;Learning XML&lt;/title&gt; </span><br><span class="line">  &lt;author&gt;Erik T. Ray&lt;/author&gt; </span><br><span class="line">  &lt;year&gt;2003&lt;/year&gt; </span><br><span class="line">  &lt;price&gt;39.95&lt;/price&gt; </span><br><span class="line">&lt;/book&gt;</span><br><span class="line">&lt;/bookstore&gt;</span><br></pre></td></tr></table></figure></p>
 <p>例子中的根元素是 <bookstore>。文档中的所有 <book> 元素都被包含在 <bookstore> 中。</bookstore></book></bookstore></p>
 <p><book> 元素有 4 个子元素：<title>、&lt; author&gt;、<year>、<price>。</price></year></title></book></p>
 <h2 id="xml语法规则"><a href="#xml语法规则" class="headerlink" title="xml语法规则"></a>xml语法规则</h2><p>1、所有 XML 元素都须有关闭标签<br>2、XML 标签对大小写敏感<br>3、XML 必须正确地嵌套<br>4、XML 文档必须有根元素<br>5、XML 的属性值须加引号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;note date=&quot;08/08/2008&quot;&gt;</span><br><span class="line">&lt;to&gt;George&lt;/to&gt;</span><br><span class="line">&lt;from&gt;John&lt;/from&gt;</span><br><span class="line">&lt;/note&gt;</span><br></pre></td></tr></table></figure></p>
 <p>6、实体引用<br>在 XML 中，一些字符拥有特殊的意义。</p>
 <p>如果你把字符 “&lt;” 放在 XML 元素中，会发生错误，这是因为解析器会把它当作新元素的开始。</p>
-<p>这样会产生 XML 错误：<br>在 XML 中，有 5 个预定义的实体引用：<br><img src="/2018/06/11/json-xml学习笔记/2.jpg" title="实体引用图"><br>7、XML 中的注释<br>在 XML 中编写注释的语法与 HTML 的语法很相似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- This is a comment --&gt;</span><br></pre></td></tr></table></figure></p>
+<p>这样会产生 XML 错误：<br>在 XML 中，有 5 个预定义的实体引用：<br><br>7、XML 中的注释<br>在 XML 中编写注释的语法与 HTML 的语法很相似：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- This is a comment --&gt;</span><br></pre></td></tr></table></figure></p>
 <p>8、在 XML 中，空格会被保留</p>
 <h2 id="xml命名规则"><a href="#xml命名规则" class="headerlink" title="xml命名规则"></a>xml命名规则</h2><p>(1.) 名称可以含字母、数字以及其他的字符<br>(2.) 名称不能以数字或者标点符号开始<br>(3.) 名称不能以字符 “xml”（或者 XML、Xml）开始<br>(4.) 名称不能包含空格</p>
 <h2 id="XMLHttpRequest-对象"><a href="#XMLHttpRequest-对象" class="headerlink" title="XMLHttpRequest 对象"></a>XMLHttpRequest 对象</h2><p>什么是 XMLHttpRequest 对象？<br>XMLHttpRequest 对象用于在后台与服务器交换数据。</p>

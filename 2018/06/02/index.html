@@ -40,7 +40,7 @@
 
 
 
-<meta name="description" content="welcome to Kiros'blog" />
+<meta name="description" content="Kiros'blog" />
 
 
 
@@ -55,16 +55,14 @@
 <meta name="keywords" content="webpack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="webpack初体验">
-<meta property="og:url" content="https://www.kiros.club/2018/06/02/webpack初体验/index.html">
+<meta property="og:url" content="https://www.kiros.club/2018/06/02/index.html">
 <meta property="og:site_name" content="Kiros">
 <meta property="og:description" content="如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。 对于模块的组织，通常有如下几种方法： 通过书写在不同文件中，使用script标签进行加载CommonJS进行加载（NodeJS就使用这种方式）AMD进行加载（require.js使用这种方式）ES6模块    思考：为什么只有JS需要被模块化管理，前台的很多">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.kiros.club/2018/06/02/webpack初体验/01.png">
 <meta property="og:updated_time" content="2018-06-02T15:36:12.486Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="webpack初体验">
 <meta name="twitter:description" content="如今，越来越多的JavaScript代码被使用在页面上，我们添加很多的内容在浏览器里。如何去很好的组织这些代码，成为了一个必须要解决的难题。 对于模块的组织，通常有如下几种方法： 通过书写在不同文件中，使用script标签进行加载CommonJS进行加载（NodeJS就使用这种方式）AMD进行加载（require.js使用这种方式）ES6模块    思考：为什么只有JS需要被模块化管理，前台的很多">
-<meta name="twitter:image" content="https://www.kiros.club/2018/06/02/webpack初体验/01.png">
 
 
 
@@ -226,7 +224,7 @@
 <p>对于模块的组织，通常有如下几种方法：</p>
 <p>通过书写在不同文件中，使用script标签进行加载<br>CommonJS进行加载（NodeJS就使用这种方式）<br>AMD进行加载（require.js使用这种方式）<br>ES6模块<br>    思考：为什么只有JS需要被模块化管理，前台的很多预编译内容，不需要管理吗？</p>
 <p>基于以上的思考，WebPack项目有如下几个目标：</p>
-<p>1、将依赖树拆分，保证按需加载<br>2、保证初始加载的速度<br>3、所有静态资源可以被模块化<br>4、可以整合第三方的库和模块<br>5、可以构造大系统<br>6、从下图可以比较清晰的看出WebPack的功能<br><img src="/2018/06/02/webpack初体验/01.png" title="webpack功能图"></p>
+<p>1、将依赖树拆分，保证按需加载<br>2、保证初始加载的速度<br>3、所有静态资源可以被模块化<br>4、可以整合第三方的库和模块<br>5、可以构造大系统<br>6、从下图可以比较清晰的看出WebPack的功能<br></p>
 <p>这是一个示意图<br>WebPack的特点<br>1、丰富的插件，方便进行开发工作<br>2、大量的加载器，包括加载各种静态资源<br>3、代码分割，提供按需加载的能力<br>4、发布工具</p>
 <h2 id="WebPack的优势"><a href="#WebPack的优势" class="headerlink" title="WebPack的优势"></a>WebPack的优势</h2><p>webpack 是以 commonJS 的形式来书写脚本滴，但对 AMD/CMD 的支持也很全面，方便旧项目进行代码迁移。<br>能被模块化的不仅仅是 JS 了。<br>开发便捷，能替代部分 grunt/gulp 的工作，比如打包、压缩混淆、图片转base64等。<br>扩展性强，插件机制完善，特别是支持 React 热插拔（见 react-hot-loader ）的功能让人眼前一亮。</p>
 <h2 id="WebPack的安装"><a href="#WebPack的安装" class="headerlink" title="WebPack的安装"></a>WebPack的安装</h2><p>安装命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install webpack -g</span><br></pre></td></tr></table></figure></p>
